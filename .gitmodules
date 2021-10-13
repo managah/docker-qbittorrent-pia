@@ -1,0 +1,3 @@
+[submodule "manual-connections"]
+	path = manual-connections
+	url = https://github.com/pia-foss/manual-connections.git
