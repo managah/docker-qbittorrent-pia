@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  qbittorrent:
+    build:
+      context: .
+    cap_add:
+      - net_admin
+    devices:
+      - /dev/net/tun
+    dns:
+      - 8.8.8.8
+    environment:
+      PIA_USER: ""
+      PIA_PASS: ""
+      PIA_DNS: "false"
+      LAN_CIDR: "192.168.0.0/24"
+      TZ: Asia/Ho_Chi_Minh
+    volumes:
+      - ./test/config:/config
+      - ./test/downloads:/downloads
+      - ./test/torrents:/torrents
+    ports:
+      - "9999:9999"
