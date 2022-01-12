@@ -7,7 +7,8 @@ on:
     branches: [ master ]
   schedule:
     - cron: '0 0 * * 0'
-
+  repository_dispatch:
+    types: [remote-trigger]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
