@@ -8,7 +8,7 @@ on:
   schedule:
     - cron: '0 0 * * 0'
   repository_dispatch:
-    types: [remote-trigger]
+    types: ["Remote Trigger"]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
