@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 
-ENV VPN_PROTOCOL=openvpn_udp_strong PREFERRED_REGION=mongolia PIA_PF=true AUTOCONNECT=true DISABLE_IPV6=true
+ENV VPN_PROTOCOL=openvpn_udp_strong PREFERRED_REGION=none PIA_PF=true AUTOCONNECT=true DISABLE_IPV6=true
 WORKDIR /qb-pia
 
 RUN export DEBIAN_FRONTEND=noninteractive \
