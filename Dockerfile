@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 ENV VPN_PROTOCOL=openvpn_udp_strong PREFERRED_REGION=none PIA_PF=true AUTOCONNECT=true DISABLE_IPV6=true
 WORKDIR /qb-pia
@@ -12,7 +12,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get install -y gnupg openvpn curl jq \
     \
     && apt-key adv --keyserver keyserver.ubuntu.com --recv 401E8827DA4E93E44C7D01E6D35164147CA69FC4 \
-    && echo "deb http://ppa.launchpad.net/qbittorrent-team/qbittorrent-stable/ubuntu focal main " | tee -a /etc/apt/sources.list \
+    && echo "deb http://ppa.launchpad.net/qbittorrent-team/qbittorrent-stable/ubuntu jammy main " | tee -a /etc/apt/sources.list \
     \
     && apt-get update \
     && apt-get install -y qbittorrent-nox \
