@@ -26,12 +26,11 @@ done
 
 if [[ "$@" == *"qbittorrent-nox"* ]]; then
     conffile=/config/qBittorrent.conf
-    tuninterface=`ip link show | grep tun | cut -d ' ' -f2 | cut -d ':' -f1`
+    tuninterface=tun06
     if [ -f $conffile ]; then
-        sed -i -r s/Session\\Port=[0-9]\+/Session\\Port=$port/ $conffile
+        sed -i -r s/Session\\\\Port=[0-9]\+/Session\\\\Port=$port/ $conffile
         sed -i -r s/PortRangeMin=[0-9]\+/PortRangeMin=$port/ $conffile
-        sed -i -r s/Session\\Interface=tun[0-9]\+/Session\\Interface=$tuninterface/ $conffile
-        sed -i -r s/Session\\InterfaceName=tun[0-9]\+/Session\\InterfaceName=$tuninterface/ $conffile
+        sed -i -r s/\(Session\\\\Interface.*\)=.*/\\1=$tuninterface/ $conffile
     else
         cat > $conffile <<EOF
 [BitTorrent]
@@ -54,7 +53,7 @@ EOF
     fi
 
     GATEWAY="$(ip route |awk '/default/ {print $3}')"
-    ip route add to ${LAN_CIDR:-172.17.0.0/16} via $GATEWAY dev eth0
+    ip route add to ${LAN_CIDR:-192.168.0.0/24} via $GATEWAY dev eth0
 
     /qb-pia/delayedshutdown.sh &
 fi
