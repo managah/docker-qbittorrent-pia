@@ -53,7 +53,9 @@ EOF
     fi
 
     GATEWAY="$(ip route |awk '/default/ {print $3}')"
-    ip route add to ${LAN_CIDR:-192.168.0.0/24} via $GATEWAY dev eth0
+    for cidr in ${LAN_CIDR:-192.168.0.0/24 192.168.10.0/24}; do
+        ip route add to $cidr via $GATEWAY dev eth0
+    done
 
     /qb-pia/delayedshutdown.sh &
 fi
