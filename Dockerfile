@@ -9,7 +9,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && echo 'tzdata tzdata/Zones/Asia select Ho_Chi_Minh' | debconf-set-selections \
     \
     && apt-get update \
-    && apt-get install -y gnupg \
+    && apt-get install -y gnupg apt-transport-https \
     \
     && apt-key adv --keyserver keyserver.ubuntu.com --recv 401E8827DA4E93E44C7D01E6D35164147CA69FC4 \
     && echo "deb http://ppa.launchpad.net/qbittorrent-team/qbittorrent-stable/ubuntu jammy main " | tee -a /etc/apt/sources.list \
