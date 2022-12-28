@@ -2,7 +2,7 @@ FROM ubuntu:22.04
 
 ENV VPN_PROTOCOL=openvpn_udp_strong PREFERRED_REGION=none PIA_PF=true AUTOCONNECT=true DISABLE_IPV6=yes MAX_LATENCY=1
 WORKDIR /qb-pia
-ADD anticache .
+ADD ./anticache .
 RUN export DEBIAN_FRONTEND=noninteractive \
     && export DEBCONF_NONINTERACTIVE_SEEN=true \
     && echo 'tzdata tzdata/Areas select Asia' | debconf-set-selections \
