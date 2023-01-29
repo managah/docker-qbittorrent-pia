@@ -3,10 +3,10 @@ name: Docker Image Build
 on:
   push:
     branches: [ master ]
-  schedule:
-    - cron: '0 0 * * 0'
-  repository_dispatch:
-    types: ["Remote Trigger"]
+      #schedule:
+      #- cron: '0 0 * * 0'
+      #repository_dispatch:
+      #types: ["Remote Trigger"]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
