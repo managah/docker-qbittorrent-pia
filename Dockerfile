@@ -48,4 +48,5 @@ ENTRYPOINT [ "/qb-pia/entrypoint.sh" ]
 
 VOLUME [ "/pia-data", "/config", "/torrents", "/downloads" ]
 
-HEALTHCHECK --interval=1m --timeout=3s CMD curl --fail http://localhost:9999 || exit 1
+HEALTHCHECK --interval=1m --timeout=3s --start-period=45s \
+ CMD curl -f --retry 6 --max-time 5 --retry-delay 10 --retry-max-time 60 http://localhost:9999 || bash -c 'kill -s 15 -1 && (sleep 10; kill -s 9 -1)'
